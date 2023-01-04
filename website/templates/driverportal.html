@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<form method="post" action="submit.php">
+  <label for="hours">Working Hours:</label><br>
+  <input type="text" id="hours" name="hours"><br>
+  <label for="image">Upload Image Proof:</label><br>
+  <input type="file" id="image" name="image"><br><br>
+  <input type="submit" value="Submit">
+</form>
+<script>
+  // Set the number of hours until the form resets
+  var resetHours = 24;
+
+  // Calculate the time until the form resets
+  var resetTime = new Date();
+  resetTime.setHours(resetTime.getHours() + resetHours);
+
+  // Reset the form at the specified time
+  setTimeout(function() {
+    document.getElementById("hours").value = "";
+    document.getElementById("image").value = "";
+  }, resetTime - Date.now());
+</script>
+{% endblock %}

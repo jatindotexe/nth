@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
+content %}
+<form method="POST">
+  <h3 align="center">Sign Up</h3>
+  <div class="form-group">
+    <label for="email">Company Email Address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="firstName"
+      name="firstName"
+      placeholder="Enter first name"
+    />
+  </div>
+ <label for="user-type">User type:</label><br>
+  <select id="user-type" name="user-type" onchange="displayInputs()">
+    <option value="admin">Admin</option>
+    <option value="logistic-staff">Logistic Staff</option>
+  </select>
+  <br><br>
+  <div id="admin-inputs" style="display:none;">
+    <label for="staff-id">Staff ID:</label><br>
+    <input type="text" id="admin-id" name="staff-id"><br>
+    <label for="admin-username">Username:</label><br>
+    <input type="text" id="admin-username" name="admin-username"><br>
+    <label for="password1">Password:</label><br>
+    <input type="password" id="adm_password1" name="adm_password1"><br>
+      <label for="password2">Confirm Password:</label><br>
+    <input type="password" id="adm_password2" name="adm_password2"><br>
+
+  </div>
+  <div id="logistic-staff-inputs" style="display:none;">
+    <label for="staff-id">Staff ID:</label><br>
+    <input type="text" id="staff-id" name="staff-id"><br>
+     <label for="staff-username">Username:</label><br>
+    <input type="text" id="staff-username" name="admin-username"><br>
+    <label for="password1">Password:</label><br>
+    <input type="password" id="password1" name="password1"><br>
+      <label for="password2">Confirm Password:</label><br>
+    <input type="password" id="password2" name="password2"><br>
+  </div>
+  <br>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+function displayInputs() {
+  var userType = document.getElementById("user-type").value;
+  if (userType === "admin") {
+    document.getElementById("admin-inputs").style.display = "block";
+    document.getElementById("logistic-staff-inputs").style.display = "none";
+  } else if (userType === "logistic-staff") {
+    document.getElementById("admin-inputs").style.display = "none";
+    document.getElementById("logistic-staff-inputs").style.display = "block";
+  }
+}
+</script>
+{% endblock %}

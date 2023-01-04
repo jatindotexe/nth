@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<div class="hero-image">
+    <img src="/hero.jpg" alt="Delicious baked goods">
+</div>
+<div class="welcome-message">
+    <h1>Welcome to Utsav Bakery</h1>
+    <p>We are a family-owned bakery that specializes in freshly baked goods made with the highest quality ingredients. Stop by our store or order online to experience the delicious taste of our products.</p>
+</div>
+<div class="featured-products">
+    <h2>Featured Products</h2>
+    <ul class="list-group list-group-flush" id="productlist">
+        {% for product in product_list %}
+        <li class="list-group-item">
+            {{ "Product Description:  "+product.data}}
+            <br>
+            {{ "Product Nutrition:  "+product.nutritional_info }}
+            <img alt={{product.id}} src="logo2.jpg" >
+
+        </li>
+        {% endfor %}
+    </ul>
+
+
+
+
+    {% endblock %}

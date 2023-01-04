@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<br>
+<br>
+<h3 align="center">Existing Products</h3>
+<ul class="list-group list-group-flush" id="productlist">
+  {% for product in product_list %}
+  <li class="list-group-item">
+    {{ "Product Description:  "+product.data}}
+    <br>
+    {{ "Product Nutrition:  "+product.nutritional_info }}
+    <img alt={{product.id}} src="logo2.jpg" >
+    <button type="button" class="close" onClick="deleteNote({{ product.id }})">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+
+<h3 align="center">Product Information</h3>
+<form method="POST">
+  <textarea name="product" id="product" class="form-control"></textarea>
+   <br />
+  <h3 align="center">Nutritional Information</h3>
+
+
+    <textarea name="nutritional-info" id="nutritional-info" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </div>
+
+</form>
+
+{% endblock %}
+

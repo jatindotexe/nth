@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <style>
+  nav1 {
+    height: 30px;
+
+  }
+    nav {
+
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #8D4637;
+
+
+  }
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  nav li {
+    float: left;
+  }
+  nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  nav a:hover {
+    background-color:;
+  }
+
+.navbar-options {
+  display: flex;
+}
+
+.navbar-options a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+ footer {
+    background-color: #f5f5f5;
+    color: #666666;
+    font-size: 14px;
+
+    bottom: 0;
+  }
+  footer a {
+    color: #666666;
+  }
+  footer a:hover {
+    color: #333333;
+  }
+  footer .container {
+    max-width: 1170px;
+    margin: auto;
+    padding: 20px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer .container .logo {
+    flex: 0 0 200px;
+  }
+  footer .container .logo img {
+    max-width: 100%;
+  }
+  footer .container .info {
+    flex: 1;
+  }
+  footer .container .info h4 {
+    margin-bottom: 10px;
+  }
+  footer .container .info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  footer .container .info li {
+    margin-bottom: 10px;
+  }
+  footer .container .info li a {
+    display: block;
+  }
+  footer .container .social {
+    flex: 0 0 200px;
+    text-align: right;
+  }
+  footer .container .social a {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  footer .container .social a i {
+    font-size: 18px;
+  }
+
+</style>
+
+    <title>{% block title %}Home{% endblock %}</title>
+  </head>
+  <body>
+    <nav1 class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-nav">
+          {% if user.is_authenticated %}
+          <a class="nav-item nav-link" id="home" href="/">Home</a>
+          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+            <a class="nav-item nav-link" id="queries" href="/queries">Queries</a>
+          {% else %}
+          <a class="nav-item nav-link" id="login" href="/login">Login</a>
+          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+          {% endif %}
+        </div>
+      </div>
+    </nav1>
+
+    <nav class="navbar navbar-expand-lg">
+
+
+     <img src="logo2.png" height="40" >
+
+  <ul>
+    <li><a class="nav-item nav-link" id="customer" href="/customer">Home</a></li>
+    <li><a class="nav-item nav-link" id="Contact" href="/Contact">Contact Us</a></li>
+    <li><a class="nav-item nav-link" id="ourProducts"  href="/ourProducts">Our Products</a></li>
+  </ul>
+</nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <div class="container">{% block content %} {% endblock %}</div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+  </body>
+<footer>
+  <div class="container">
+    <div class="logo">
+      <img src="logo2.png" height="40" >
+    </div>
+    <div class="info">
+      <h4>Contact</h4>
+      <ul>
+        <li>
+          <a href="mailto:info@bakerycompany.com">info@bakerycompany.com</a>
+
+        </li>
+        <li>
+          Phone: 555-555-5555
+        </li>
+        <li>
+          123 Main Street, Anytown Country 12345
+        </li>
+      </ul>
+    </div>
+    <div class="social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</footer>
+</html>
+
+

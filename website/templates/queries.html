@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content%}
+<br>
+<br>
+<h3 align="center">Customer Queries:</h3>
+
+<ul class="list-group list-group-flush" id="querylist">
+  {% for q in query_instances %}
+  <li class="list-group-item">
+    {{ "User:  "+ q.name }}
+    <br>
+    {{ "Phone:  "+ q.phone }}
+    <br>
+    {{ "Email:  "+ q.email }}
+    <br>
+    {{ "Query:  "+ q.message }}
+
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
